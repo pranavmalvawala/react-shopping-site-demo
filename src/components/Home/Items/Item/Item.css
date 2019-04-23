@@ -1,0 +1,37 @@
+.block {
+    border: 1px solid #eea9c6de;
+    cursor: pointer;
+    display: flex;
+    width: 90%;
+    margin: 20px auto;
+    
+}
+
+.left {
+    width: 33.33%;
+    margin: 10px;
+    text-align: center;
+    /* border: 1px solid #232323; */
+}
+
+.middle {
+    width: 33.33%;
+    margin: 10px;
+    text-align: center;
+    /* border: 1px solid #232323; */
+}
+
+.right {
+    width: 33.33%;
+    margin: 10px;
+    text-align: center;
+    /* border: 1px solid #232323; */
+}
+
+.space {
+    margin-right: 5px;
+}
+.common-flex-div {
+    display: flex;
+    justify-content: center
+}
