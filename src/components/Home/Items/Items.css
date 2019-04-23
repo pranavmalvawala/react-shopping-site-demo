@@ -1,0 +1,17 @@
+.shopping-contain-main-div {
+    display: flex;
+    width: 100%;
+}
+.left-side-contain-div {
+    width: 70%;
+    border: 1px solid #232323;
+    margin: 10px;
+}
+.right-side-contain-div {
+    width: 30%;   
+    margin: 10px;
+}
+
+p {
+    text-align: center;
+}

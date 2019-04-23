@@ -1,0 +1,21 @@
+h1 {
+    background: purple;
+    color: white;
+    font-size: 28px;
+    padding: 20px;
+    margin: 0px;
+    text-align: center
+}
+
+.head-flex {
+    display: flex;
+    width: 100%
+}
+
+.head-left-div {
+    width: 85%
+}
+
+.head-right-div {
+    width: 15%
+}
