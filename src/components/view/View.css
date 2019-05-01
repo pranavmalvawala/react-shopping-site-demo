@@ -67,3 +67,13 @@ h2 {
     margin: 0px;
     text-align: center
 }
+
+.go-back {
+    margin-left: 30px;
+    background-color: #c8e6f5;
+    color: #0c084c;
+}
+
+.go-back:hover {
+    background-color: #d7f7f5;
+}

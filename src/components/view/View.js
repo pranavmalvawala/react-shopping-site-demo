@@ -10,9 +10,33 @@ export class View extends Component {
     super(props);
 
     this.state = {
-      clicked: false
+      clicked: false,
+      goBack: false
     };
     this.handleClick = this.handleClick.bind(this);
+    this.handleGoBack = this.handleGoBack.bind(this);
+    this.handleIncrease = this.handleIncrease.bind(this);
+  }
+
+  handleIncrease(cartArray) {
+    if (cartArray.length === 0) {
+      console.log("First Add");
+      this.props.select.count = 1;
+    } else if (cartArray.length > 0) {
+      const selectObjId = this.props.select.id;
+      const objIndex = cartArray.findIndex(obj => obj.id === selectObjId);
+      if (objIndex === -1) {
+        console.log("Adding new");
+      } else {
+        console.log("function", cartArray);
+        console.log("select obj", this.props.select);
+        const foundObjIndex = cartArray.findIndex(
+          obj => obj.id === this.props.select.id
+        );
+        console.log("obj found", cartArray[foundObjIndex]);
+        this.props.select.count = cartArray[foundObjIndex].count;
+      }
+    }
   }
 
   handleClick() {
@@ -26,8 +50,22 @@ export class View extends Component {
     this.props.history.push("/cart");
   };
 
+  handleGoBack() {
+    this.setState({
+      goBack: true
+    });
+    this.goToHomePage();
+  }
+
+  goToHomePage = () => {
+    this.props.history.push("/");
+  };
+
   render() {
-    console.log(this.props.cart.arr.length);
+    const found = this.props.cart.arr.some(
+      item => item.id === this.props.select.id
+    );
+    console.log("view page", this.props.cart.arr);
     return (
       <div>
         <div className="head-flex">
@@ -35,11 +73,11 @@ export class View extends Component {
             <h1>From view Page</h1>
           </div>
           <div className="head-right-div">
-            <h2>
+            <h2 className="pointer" onClick={() => this.handleClick()}>
               cart items:
               {this.props.cart.arr.length > 0
                 ? this.props.cart.arr.length
-                : "empty"}
+                : "0"}
             </h2>
           </div>
         </div>
@@ -66,12 +104,15 @@ export class View extends Component {
               {this.props.select.price}
             </p>
             <button
-              onClick={() => {
+              onClick={async () => {
+                await this.handleIncrease(this.props.cart.arr);
                 this.props.addToCart(this.props.select);
-                this.handleClick();
               }}
             >
-              Add To Cart
+              {found ? "Increase Its Amount In Cart" : "Add To Cart"}
+            </button>
+            <button className="go-back" onClick={() => this.handleGoBack()}>
+              Go Back
             </button>
           </div>
         </div>

@@ -1,6 +1,32 @@
-.cart-block {
+.cart-flex {
+    width: 100%;
+    display: flex
+}
+
+.cart-left-div {
     width: 70%;
-    border: 1px solid #00334e;
-    margin: 20px;
     text-align: center;
+    margin: 20px;
+    border: 1px solid black;
+}
+
+.cart-right-div {
+    width: 30%;
+    margin-top: 100px;
+}
+
+.button-right {
+    margin-left: 850px;
+}
+
+.margin-btn {
+    margin: 0 20px 0 20px;
+    
+}
+
+h3 > button {
+    padding: 0;
+    margin: 0 20px 0 20px;    
+    background-color: black;
+    
 }

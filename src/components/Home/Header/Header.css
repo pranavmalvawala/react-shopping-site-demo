@@ -19,3 +19,11 @@ h1 {
 .head-right-div {
     width: 15%
 }
+
+.pointer {
+    cursor: pointer;
+}
+
+.position {
+    position: fixed;
+}

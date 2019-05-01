@@ -4,7 +4,8 @@ const selectReducer = (
     name: "",
     info: "",
     color: "",
-    price: ""
+    price: "",
+    count: 1
   },
   action
 ) => {
@@ -16,7 +17,8 @@ const selectReducer = (
         name: action.payload.name,
         info: action.payload.info,
         color: action.payload.color,
-        price: action.payload.price
+        price: action.payload.price,
+        count: 1
       };
       break;
     default:
