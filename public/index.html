@@ -13,6 +13,13 @@
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
     -->
     <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+    <link
+    rel="stylesheet"
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+    crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     <!--
       Notice the use of %PUBLIC_URL% in the tags above.
       It will be replaced with the URL of the `public` folder during the build.
@@ -23,6 +30,8 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>React App</title>
+    <script src="https://unpkg.com/pace-js@1.0.2/pace.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
@@ -36,6 +45,19 @@
 
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
+      
     -->
+    <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId            : 'your-app-id',
+          autoLogAppEvents : true,
+          xfbml            : true,
+          version          : 'v3.2'
+        });
+      };
+    </script>
+    <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
+    
   </body>
 </html>

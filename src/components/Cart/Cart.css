@@ -1,0 +1,16 @@
+.cart-head-flex {
+    display: flex;
+    width: 100%;
+}
+
+.left-head-flex {
+    width: 80%;
+}
+
+.right-head-flex {
+    width: 20%;
+}
+
+.remove-all {
+    margin-left: 700px;
+}

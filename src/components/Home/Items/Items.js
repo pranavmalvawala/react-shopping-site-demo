@@ -1,85 +1,82 @@
 import React, { Component } from "react";
 import "./Items.css";
 import Item from "./Item/Item";
+import InfiniteScroll from "react-infinite-scroller";
+import qwest from "qwest";
+
+const api = {
+  baseUrl: "http://localhost:5000/data"
+};
 
 class Items extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      data: [],
+      hasMoreItems: true,
+      nextCall: null
+    };
+    this.loadItems = this.loadItems.bind(this);
+  }
+
+  loadItems = page => {
+    var that = this;
+    console.log(page);
+    let url = api.baseUrl + "/" + page;
+    console.log(url);
+    qwest
+      .get(url, {
+        cache: true
+      })
+      .then(function(xhr, resp) {
+        if (resp) {
+          let dataFromResponse = [];
+
+          resp.result.map(obj => {
+            return dataFromResponse.push(obj);
+          });
+          if (page > 5) {
+            this.setState({
+              hasMoreItems: false
+            });
+          } else {
+            that.setState({
+              data: dataFromResponse
+            });
+          }
+        }
+      });
+  };
+
   render() {
+    let items = [];
+    this.state.data.map((item, i) => {
+      return items.push(item);
+    });
+
     return (
       <div className="shopping-contain-main-div">
-        <div className="left-side-contain-div">
+        <div className="left-side-contain-div  position-margin">
           <p> Item List </p>
-          <Item
-            key="1"
-            id="1"
-            name="iphone 6"
-            info="64gb"
-            color="space grey"
-            price="800$"
-          />
-          <Item
-            key="2"
-            id="2"
-            name="iphone 6s"
-            info="64gb"
-            color="space grey"
-            price="800$"
-          />
-          <Item
-            key="3"
-            id="3"
-            name="iphone 7"
-            info="64gb"
-            color="space grey"
-            price="800$"
-          />
-          <Item
-            key="4"
-            id="4"
-            name="iphone 7 plus"
-            info="64gb"
-            color="space grey"
-            price="800$"
-          />
-          <Item
-            key="5"
-            id="5"
-            name="iphone 8"
-            info="64gb"
-            color="space grey"
-            price="800$"
-          />
-          <Item
-            key="6"
-            id="6"
-            name="iphone 8 plus"
-            info="64gb"
-            color="space grey"
-            price="800$"
-          />
-          <Item
-            key="7"
-            id="7"
-            name="iphone x"
-            info="64gb"
-            color="space grey"
-            price="800$"
-          />
-          <Item
-            key="8"
-            id="8"
-            name="iphone xs"
-            info="64gb"
-            color="space grey"
-            price="800$"
-          />
-          <Item
-            key="9"
-            id="9"
-            name="iphone xs max"
-            info="64gb"
-            color="space grey"
-            price="800$"
-          />
+          <InfiniteScroll
+            key={1}
+            pageStart={0}
+            loadMore={this.loadItems}
+            hasMore={this.state.hasMoreItems}
+            loader={this.state.hasMoreItems}
+          >
+            {items.map(each => (
+              <Item
+                key={each.key}
+                id={each.id}
+                name={each.name}
+                info={each.info}
+                color={each.color}
+                price={each.price}
+              />
+            ))}
+          </InfiniteScroll>
         </div>
         <div className="right-side-contain-div" />
       </div>
