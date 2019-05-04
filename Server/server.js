@@ -30,58 +30,21 @@ app.get("/data/:pageNo", function(req, res) {
       const dataObject = JSON.parse(dataInJson);
       dataObjectGlobal.dataObject = dataObject;
 
-      // console.log(dataObjectGlobal.dataObject.items.slice(0, 10));
+      
       console.log("=-=-=-=->", pageNo);
       const result = dataObjectGlobal.dataObject.items.slice(0, 10 * pageNo);
       console.log(result);
       res.send({ result });
 
-      // if (pageNo === 1) {
-      //   const result = dataObjectGlobal.dataObject.items.slice(0, 10);
-      //   res.send({ result });
-      // }
-      // if (pageNo === 2) {
-      //   const result = dataObjectGlobal.dataObject.items.slice(10, 19);
-      //   res.send({ result });
-      // }
-      // if (pageNo === 3) {
-      //   const result = dataObjectGlobal.dataObject.items.slice(20, 28);
-      //   res.send({ result });
-      // }
-      // if (pageNo === 4) {
-      //   const result = dataObjectGlobal.dataObject.items.slice(29, 37);
-      //   res.send({ result });
-      // }
-      // if (pageNo === 5) {
-      //   const result = dataObjectGlobal.dataObject.items.slice(0, 10);
-      //   res.send({ result });
-      // }
+      
     } catch (err) {
       console.log(err);
     }
-    //   const query = dataObjectGlobal.dataObject.items.map
-    //     .sort(function(a, b) {
-    //       return a.Variable1 < b.Variable1 ? 1 : -1;
-    //     })
-    //     .slice(0, 20);
-    //   console.log(query);
+    
   });
 });
 
-// app.get("/data", function(req, res) {
-//   const lineReader = require("readline").createInterface({
-//     input: fs.createReadStream("data.json")
-//   });
-//   lineReader.on("line", function(line) {
-//     console.log("line from file: ", line);
-//   });
-// });
 
-// app.get("/data/:pageNo", function(req, res) {
-//   const pageNo = req.params.pageNo;
-//   console.log(pageNo);
-//   res.send({ dataObjectGlobal });
-// });
 
 app.post("/checkout", function(req, res) {
   const itemsArray = req.body;
@@ -89,7 +52,7 @@ app.post("/checkout", function(req, res) {
   Item.create({ createEntry: itemsArray });
 });
 
-const stripe = new stripeLoader("sk_test_JUe3Utv107b5al5AvE8t0ty500b5I4Y1wP");
+const stripe = new stripeLoader("Your API Key");
 
 const charge = (token, amt) => {
   return stripe.charges.create({
