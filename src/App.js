@@ -11,7 +11,7 @@ import { StripeProvider, Elements } from "react-stripe-elements";
 
 const App = () => {
   return (
-    <StripeProvider apiKey="pk_test_zXxmUUcYTq3yzw2exfvtYHSH00RoEbEDuI">
+    <StripeProvider apiKey="Your published key from stripe">
       <Router>
         <Switch>
           <Route exact path="/" render={() => <Home />} />
