@@ -52,7 +52,7 @@ app.post("/checkout", function(req, res) {
   Item.create({ createEntry: itemsArray });
 });
 
-const stripe = new stripeLoader("Your API Key");
+const stripe = new stripeLoader("Your Secret API Key from stripe");
 
 const charge = (token, amt) => {
   return stripe.charges.create({
