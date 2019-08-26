@@ -1,5 +1,3 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
 ## Available Scripts
 
 In the project directory, you can run:
@@ -14,4 +12,4 @@ You will also see any lint errors in the console.
 
 ### for normal pagination
 
-change server and items file from their respective folder to files in new folder 
+change server and items file from their respective folder to files in new folder
