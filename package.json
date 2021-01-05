@@ -5,7 +5,7 @@
   "dependencies": {
     "@types/react-stripe-elements": "^1.1.10",
     "@types/stripe": "^6.25.12",
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "bootstrap": "^4.3.1",
     "history": "^4.9.0",
     "pace": "0.0.4",
